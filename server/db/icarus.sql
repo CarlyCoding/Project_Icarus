@@ -25,11 +25,12 @@ CREATE TABLE orders(
 );
 
 CREATE TABLE invoices(
-    invoice_number INT,
+    invoice_number VARCHAR(255),
     date_of_invoice DATETIME,
     description_of_goods VARCHAR(255),
     pre_tax INT,
     tax_rate INT,
+    tax_to_pay INT,
     total_to_pay INT,
     status_matched BOOLEAN,
 );
@@ -42,6 +43,11 @@ INSERT INTO suppliers (name) VALUES ("Redfern Travel");
 INSERT INTO suppliers (name) VALUES ("Benugo");
 INSERT INTO suppliers (name) VALUES ("Costa Coffee");
 INSERT INTO suppliers (name) VALUES ("Costco");
+INSERT INTO suppliers (name) VALUES ("Mitie Cleaning");
+INSERT INTO suppliers (name) VALUES ("S1 Marketing");
+INSERT INTO suppliers (name) VALUES ("Deloitte Accounting");
+INSERT INTO suppliers (name) VALUES ("BT");
+INSERT INTO suppliers (name) VALUES ("Harper MacLeod")
 
 INSERT INTO requisitioners (name, department_code) VALUES ("Maurice Moss", IT);
 INSERT INTO requisitioners (name, department_code) VALUES ("Jenn Barber", MG);
@@ -60,3 +66,44 @@ INSERT INTO orders (date, po_number, full_amount_raised, receipted_amount, tax_r
 INSERT INTO orders (date, po_number, full_amount_raised, receipted_amount, tax_rate) VALUES (2022/09/06, 153, 800, 400, 20);
 INSERT INTO orders (date, po_number, full_amount_raised, receipted_amount, tax_rate) VALUES (2022/09/02, 154, 350, 150, 20);
 INSERT INTO orders (date, po_number, full_amount_raised, receipted_amount, tax_rate) VALUES (2022/07/06, 155, 1300, 1000, 20);
+
+INSERT INTO invoices(invoice_number, date_of_invoice, description_of_goods, pre_tax, tax_rate, total_to_pay, status_matched)
+VALUES ("INV476", 2022/07/01, "New monitor for accounts", 145, 20, 29, 174, FALSE);
+INSERT INTO invoices(invoice_number, date_of_invoice, description_of_goods, pre_tax, tax_rate, total_to_pay, status_matched)
+VALUES ("INV590", 2022/05/01, "Finance stationary", 125, 20, 25, 150, FALSE);
+INSERT INTO invoices(invoice_number, date_of_invoice, description_of_goods, pre_tax, tax_rate, total_to_pay, status_matched)
+VALUES ("INV465", 2022/09/01, "Boardroom projector", 145, 20, 29, 174, FALSE);
+INSERT INTO invoices(invoice_number, date_of_invoice, description_of_goods, pre_tax, tax_rate, total_to_pay, status_matched)
+VALUES ("INV00", 2022/06/01, "Flights for CEO", 2000, 20, 400, 2400, FALSE);
+INSERT INTO invoices(invoice_number, date_of_invoice, description_of_goods, pre_tax, tax_rate, total_to_pay, status_matched)
+VALUES ("CN67", 2022/09/06, "Cleaning Services Sept", 160, 20, 32, 192, FALSE);
+INSERT INTO invoices(invoice_number, date_of_invoice, description_of_goods, pre_tax, tax_rate, total_to_pay, status_matched)
+VALUES ("001", 2022/10/10, "Marketing materials for 2022", 130, 20, 26, 156, FALSE);
+INSERT INTO invoices(invoice_number, date_of_invoice, description_of_goods, pre_tax, tax_rate, total_to_pay, status_matched)
+VALUES ("X9FG", 2022/04/10, "Tea and Coffee for boardroom", 70, 20, 14, 84, FALSE);
+INSERT INTO invoices(invoice_number, date_of_invoice, description_of_goods, pre_tax, tax_rate, total_to_pay, status_matched)
+VALUES ("INV002", 2022/03/01, "2022 Auditing", 550, 20, 110, 660, FALSE);
+INSERT INTO invoices(invoice_number, date_of_invoice, description_of_goods, pre_tax, tax_rate, total_to_pay, status_matched)
+VALUES ("FG004", 2022/03/03, "Cables for IT", 35, 20, 7, 42, FALSE);
+-- START BACK HERE
+INSERT INTO invoices(invoice_number, date_of_invoice, description_of_goods, pre_tax, tax_rate, total_to_pay, status_matched)
+VALUES ("AB87U", 2022/10/01, "Window Cleaning", 145, 20, 29, 174, TRUE);
+INSERT INTO invoices(invoice_number, date_of_invoice, description_of_goods, pre_tax, tax_rate, total_to_pay, status_matched)
+VALUES ("22AB", 2022/06/01, "Maintenance", 145, 20, 29, 174, TRUE);
+INSERT INTO invoices(invoice_number, date_of_invoice, description_of_goods, pre_tax, tax_rate, total_to_pay, status_matched)
+VALUES ("P9GH66", 2022/06/06, "Sandwiches for Boardroom 2", 145, 20, 29, 174, TRUE);
+INSERT INTO invoices(invoice_number, date_of_invoice, description_of_goods, pre_tax, tax_rate, total_to_pay, status_matched)
+VALUES ("INV095", 2022/09/01, "Telephone Charges September", 145, 20, 29, 174, TRUE);
+INSERT INTO invoices(invoice_number, date_of_invoice, description_of_goods, pre_tax, tax_rate, total_to_pay, status_matched)
+VALUES ("IPA78G", 2022/09/01, "Prep of financial accounts '22", 145, 20, 29, 174, TRUE);
+INSERT INTO invoices(invoice_number, date_of_invoice, description_of_goods, pre_tax, tax_rate, total_to_pay, status_matched)
+VALUES ("FTP78", 2022/08/08, "Keyboard", 145, 20, 29, 174, TRUE);
+INSERT INTO invoices(invoice_number, date_of_invoice, description_of_goods, pre_tax, tax_rate, total_to_pay, status_matched)
+VALUES ("GH6TT", 2022/03/01, "HP laptop", 145, 20, 29, 174, TRUE);
+INSERT INTO invoices(invoice_number, date_of_invoice, description_of_goods, pre_tax, tax_rate, total_to_pay, status_matched)
+VALUES ("XERO06", 2022/03/03, "Leaflets for Stirling Castle", 145, 20, 29, 174, TRUE);
+INSERT INTO invoices(invoice_number, date_of_invoice, description_of_goods, pre_tax, tax_rate, total_to_pay, status_matched)
+VALUES ("XER645", 2022/10/02, "Legal fees Oct", 145, 20, 29, 174, TRUE);
+INSERT INTO invoices(invoice_number, date_of_invoice, description_of_goods, pre_tax, tax_rate, total_to_pay, status_matched)
+VALUES ("QB04", 2022/02/02, "Bulk catering", 145, 20, 29, 174, TRUE);
+
