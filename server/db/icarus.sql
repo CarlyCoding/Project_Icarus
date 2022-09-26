@@ -33,3 +33,30 @@ CREATE TABLE invoices(
     total_to_pay INT,
     status_matched BOOLEAN,
 );
+
+INSERT INTO suppliers (name) VALUES ("Hewlett Packard");
+INSERT INTO suppliers (name) VALUES ("Pertemps");
+INSERT INTO suppliers (name) VALUES ("Lyreco");
+INSERT INTO suppliers (name) VALUES ("Scottish Power");
+INSERT INTO suppliers (name) VALUES ("Redfern Travel");
+INSERT INTO suppliers (name) VALUES ("Benugo");
+INSERT INTO suppliers (name) VALUES ("Costa Coffee");
+INSERT INTO suppliers (name) VALUES ("Costco");
+
+INSERT INTO requisitioners (name, department_code) VALUES ("Maurice Moss", IT);
+INSERT INTO requisitioners (name, department_code) VALUES ("Jenn Barber", MG);
+INSERT INTO requisitioners (name, department_code) VALUES ("Roy", IT);
+INSERT INTO requisitioners (name, department_code) VALUES ("Douglas Renholm", CO);
+INSERT INTO requisitioners (name, department_code) VALUES ("Richmond", AD);
+
+INSERT INTO orders (date, po_number, full_amount_raised, receipted_amount, tax_rate) VALUES (2022/09/08, 145, 200, 150, 20);
+INSERT INTO orders (date, po_number, full_amount_raised, receipted_amount, tax_rate) VALUES (2022/09/12, 146, 700, 400, 20);
+INSERT INTO orders (date, po_number, full_amount_raised, receipted_amount, tax_rate) VALUES (2022/06/08, 147, 1000, 900, 20);
+INSERT INTO orders (date, po_number, full_amount_raised, receipted_amount, tax_rate) VALUES (2022/04/10, 148, 150, 150, 20);
+INSERT INTO orders (date, po_number, full_amount_raised, receipted_amount, tax_rate) VALUES (2022/03/07, 149, 125, 50, 20);
+INSERT INTO orders (date, po_number, full_amount_raised, receipted_amount, tax_rate) VALUES (2022/03/06, 150, 700, 500, 20);
+INSERT INTO orders (date, po_number, full_amount_raised, receipted_amount, tax_rate) VALUES (2022/09/16, 151, 800, 400, 20);
+INSERT INTO orders (date, po_number, full_amount_raised, receipted_amount, tax_rate) VALUES (2022/09/08, 152, 2300, 2150, 20);
+INSERT INTO orders (date, po_number, full_amount_raised, receipted_amount, tax_rate) VALUES (2022/09/06, 153, 800, 400, 20);
+INSERT INTO orders (date, po_number, full_amount_raised, receipted_amount, tax_rate) VALUES (2022/09/02, 154, 350, 150, 20);
+INSERT INTO orders (date, po_number, full_amount_raised, receipted_amount, tax_rate) VALUES (2022/07/06, 155, 1300, 1000, 20);
