@@ -1,12 +1,11 @@
 import logo from './logo.svg';
 import './App.css';
+import NavigationContainer from './containers/Navigation';
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-          hello world
-      </header>
+        <NavigationContainer></NavigationContainer>
     </div>
   );
 }
