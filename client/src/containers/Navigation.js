@@ -6,6 +6,7 @@ function NavigationContainer(){
         <Router>
             <Routes>
                <Route exact path="/" element={<Home/>} />
+               {/* Enter here all the pathways for the pages */}
             </Routes>
         </Router>
     )
