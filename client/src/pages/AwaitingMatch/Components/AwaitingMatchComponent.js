@@ -1,13 +1,13 @@
 import { ThemeContext } from "@emotion/react";
 import { useEffect, useState } from "react";
 
-function AwaitingMatchComponent(){
-    const [supplierId, setSupplierId]= useState(undefined);
+function AwaitingMatchComponent({supplierId}){
+    const [invoices, setInvoices]= useState([]);
 
-
+// Unmatched is == False
     useEffect(
         () => {
-            fetch(`http://localhost:3000/suppliers/${supplierId}/orders`)
+            fetch(`http://localhost:3000/suppliers/${supplierId}/invoices/unmatched`)
             .then(res => res.json)
             .then(setInvoices)
         },
@@ -17,54 +17,36 @@ function AwaitingMatchComponent(){
 
     return(
         supplierId
-        ?
-        <table>
-            <thead>
-                <th>Invoice Number</th>
-                <th>Invoice Date</th>
-                <th>Description of goods</th>
-                <th></th>
-                <th></th>
-                <th></th>
-                <th></th>
-                <th></th>
-            </thead>
-        </table>
-
-
+            ?
+                <table>
+                    <thead>
+                        <th>Invoice Number</th>
+                        <th>Invoice Date</th>
+                        <th>Description of goods</th>
+                        <th>Pre-Tax total</th>
+                        <th>Tax Rate</th>
+                        <th>Tax to Pay</th>
+                        <th>Total to pay</th>
+                        <th>Status matched for payment</th>
+                    </thead>
+                    <tbody>
+                        {invoices.map(invoice => {
+                            return
+                            <tr>
+                                <td>{invoice.invoice_number}</td>
+                                <td>{invoice.date_of_invoice}</td>
+                                <td>{invoice.description_of_goods}</td>
+                                <td>{invoice.pre_tax}</td>
+                                <td>{invoice.tax_rate}</td>
+                                <td>{invoice.tax_to_pay}</td>
+                                <td>{invoice.total_to_pay}</td>
+                                <td>{invoice.status_matched}</td>
+                            </tr>
+                        })}
+                    </tbody>
+                </table>
+            :<h2> Choose a supplier</h2>
     )
+    
 }
-
-
-
-// supplierId 
-// ?
-//     <table>
-//         <thead>
-//             <th>PO Number</th>
-//             <th>Description</th>
-//             <th>Date</th>
-//             <th>Raised</th>
-//             <th>Receipted</th>
-//             <th>Tax Rate</th>
-//         </thead>
-//         <tbody>
-//         {orders.map(order => {
-//             // th is for table header and td is for table data
-//             return <tr>
-//                 <td>{order.po_number}</td>
-//                 <td>{order.description}</td>
-//                 <td>{order.date}</td>
-//                 <td>{order.raised}</td>
-//                 <td>{order.receipted}</td>
-//                 <td>{order.tax_rate}</td>
-//             </tr>
-//         })}
-//         </tbody>
-//     </table>
-// :
-//     <h3>Choose a supplier to view PO's</h3>
-// )
-// }
-
-// export default PurchaseOrdersComponent;
+ export default AwaitingMatchComponent;

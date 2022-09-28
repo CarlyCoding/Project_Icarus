@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import PurchaseOrdersComponent from '../Components/PurchaseOrdersComponent';
-import SearchSupplierComponent from '../Components/SearchSupplierComponent';
+import SearchSupplierComponent from '../../../components/SearchSupplierComponent';
 
 function ViewPurchaseOrdersContainer(){
     const [supplierId, setSupplierId]= useState(undefined);
