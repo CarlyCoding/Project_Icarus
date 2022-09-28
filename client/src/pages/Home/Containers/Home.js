@@ -16,8 +16,8 @@ function Home() {
         {/* Insert the card details and correct linking- DEAD LINKS */}
         <PageLink link={'/ViewPos'} text={'View purchase orders'}/>
         <PageLink link={'/KeyInvoice'} text={'Manually key invoice'}/>
-        <PageLink link={'/ViewPos'} text={'View keyed invoices'}/>
-        <PageLink link={'/ViewPos'} text={'View payment run'}/>
+        <PageLink link={'/ViewKeyed'} text={'View keyed invoices'}/>
+        <PageLink link={'/ViewPaymentRun'} text={'View payment run'}/>
       </div>
       </>
     );
