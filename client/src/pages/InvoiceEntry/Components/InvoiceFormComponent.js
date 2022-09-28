@@ -22,12 +22,23 @@ function InvoiceFormComponent(){
         setGoodsDescription(event.target.value);
     }
 
+    const [net_amount, setNetAmount]= useState();
+    const handleNetAmountEntry= (event) =>{
+        setNetAmount(event.target.value);
+    }
+
+    const [tax_rate, setTaxRate]= useState();
+    const handleTaxRateEntry= (event) =>{
+        setTaxRate(event.target.value);
+    }
+
+    const [total_to_pay, setTotalToPay]= useState();
+    const handleTotalToPayEntry= (event) =>{
+        setTotalToPay(event.target.value);
+    }
+    // Add a field to attach a PDF here to the invoice record- if possible
 
 
-
-
-
-    
     const handleSubmit= (event) => {
         event.preventDefault();
         alert("Clicked save");
@@ -50,7 +61,18 @@ function InvoiceFormComponent(){
                 Description of goods:
                 <input type="text" value={goods_description} onChange={handleGoodsDescriptionEntry}/>
             </label>
-            {/* Next labels should be the next fields */}
+            <label>
+                Net Amount:
+                <input type="text" value={net_amount} onChange={handleNetAmountEntry}/>
+            </label>
+            <label>
+                Tax Rate:
+                <input type="text" value={tax_rate} onChange={handleTaxRateEntry}/>
+            </label>
+            <label>
+                Total to pay:
+                <input type="text" value={total_to_pay} onChange={handleTotalToPayEntry}/>
+            </label>
             <input type="submit" value="Submit"/>
         </form>
     )
