@@ -8,7 +8,7 @@ function AwaitingMatchComponent({supplierId}){
     useEffect(
         () => {
             fetch(`http://localhost:3000/suppliers/${supplierId}/invoices/unmatched`)
-            .then(res => res.json)
+            .then(res => res.json())
             .then(setInvoices)
         },
         [supplierId]
@@ -31,8 +31,8 @@ function AwaitingMatchComponent({supplierId}){
                     </thead>
                     <tbody>
                         {invoices.map(invoice => {
-                            return
-                            <tr>
+                            // Remember on return JS will need the next instruction on the same line or will assume null. 
+                            return <tr>
                                 <td>{invoice.invoice_number}</td>
                                 <td>{invoice.date_of_invoice}</td>
                                 <td>{invoice.description_of_goods}</td>
