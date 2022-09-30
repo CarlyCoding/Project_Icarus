@@ -13,7 +13,7 @@ function Home() {
       </div>
 
       <div className= "HomeLinks">
-        {/* Insert the card details and correct linking- DEAD LINKS */}
+        
         <PageLink link={'/ViewPos'} text={'View purchase orders'}/>
         <PageLink link={'/KeyInvoice'} text={'Manually key invoice'}/>
         <PageLink link={'/ViewKeyed'} text={'View keyed invoices'}/>

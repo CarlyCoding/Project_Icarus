@@ -33,7 +33,7 @@ function AwaitingMatchComponent({supplierId}){
                         {invoices.map(invoice => {
                             // Remember on return JS will need the next instruction on the same line or will assume null. 
                             return <tr>
-                                <td>{invoice.invoice_number}</td>
+                                <td><a href={`/InvoiceMatch/${invoice.invoice_number}`}>{invoice.invoice_number}</a></td>
                                 <td>{invoice.date_of_invoice}</td>
                                 <td>{invoice.description_of_goods}</td>
                                 <td>{invoice.pre_tax}</td>
