@@ -1,4 +1,6 @@
 import { useState } from "react";
+import Box from '@mui/material/Box';
+import TextField from '@mui/material/TextField';
 
 function InvoiceFormComponent(){
     const [po_number, setPoNumber]= useState();
@@ -67,42 +69,69 @@ function InvoiceFormComponent(){
             setInvoiceNumber("");
             setInvoiceDate("");
             setGoodsDescription("");
+            setNetAmount("");
+            setTaxRate("");
+            setTotalToPay("");
         })
     }
 
     return(
-        <form onSubmit={handleSubmit}>
-            <label>
-                Po Number:
-                <input type="text" value={po_number} onChange={handlePoChange}/>
-            </label>
-            <span>Supplier name {supplier_name}</span>
-            <label>
-                Invoice number:
-                <input type="text" value={invoice_number} onChange={handleInvoiceNumberEntry}/>
-            </label>
-            <label>
-                Invoice Date:
-                <input type="text" value={invoice_date} onChange={handleInvoiceDateEntry}/>
-            </label>
-            <label>
-                Description of goods:
-                <input type="text" value={goods_description} onChange={handleGoodsDescriptionEntry}/>
-            </label>
-            <label>
-                Net Amount:
-                <input type="text" value={net_amount} onChange={handleNetAmountEntry}/>
-            </label>
-            <label>
-                Tax Rate:
-                <input type="text" value={tax_rate} onChange={handleTaxRateEntry}/>
-            </label>
-            <label>
-                Total to pay:
-                <input type="text" value={total_to_pay} onChange={handleTotalToPayEntry}/>
-            </label>
-            <input type="submit" value="Submit"/>
-        </form>
+            <>
+        <Box
+        component="form"
+        sx={{
+          '& .MuiTextField-root': { m: 1, width: '25ch' },
+        }}
+        noValidate
+        autoComplete="off">
+        <div>
+        <TextField
+            required
+            label="PO Number"
+            value={po_number} onChange={handlePoChange}
+        />
+        <TextField
+          disabled
+          value={supplier_name}
+        />
+        <TextField
+            required
+            label="Invoice number"
+            value={invoice_number} onChange={handleInvoiceNumberEntry}
+        />
+        <TextField
+            required
+            type="date"
+            label="Invoice Date"
+            value={invoice_date} onChange={handleInvoiceDateEntry}
+        />
+        </div>
+
+        <div>
+        <TextField
+        required
+        label="Description of goods"
+        value={goods_description} onChange={handleGoodsDescriptionEntry}
+        />
+        <TextField
+        required
+        label="Net Amount"
+        value={net_amount} onChange={handleNetAmountEntry}
+        />
+        <TextField
+        required
+        label="Tax Rate"
+        value={tax_rate} onChange={handleTaxRateEntry}
+        />
+        <TextField
+        required
+        label="Total to pay"
+        value={total_to_pay} onChange={handleTotalToPayEntry}
+        />
+        </div>
+        <input type="submit" value="Submit" onClick={handleSubmit}/>
+        </Box>
+        </>
     )
 }
 
