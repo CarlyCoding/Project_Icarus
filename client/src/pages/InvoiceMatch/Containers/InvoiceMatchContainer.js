@@ -17,7 +17,11 @@ const InvoiceMatchContainer = () => {
     return(
         <>
         {/* Do same for the PO here.  */}
+
         <h1> Invoice matching Screen </h1>
+        
+        <h3>Purchase order associated for match</h3>
+        <h3>Invoice detail for match</h3>
             <span>Invoice number {invoice.invoice_number} {invoice.description_of_goods} {invoice.pre_tax} {invoice.tax_rate} {invoice.total_to_pay}</span>
         </>
         // Should have an on click change bool to true for status_matched. 
