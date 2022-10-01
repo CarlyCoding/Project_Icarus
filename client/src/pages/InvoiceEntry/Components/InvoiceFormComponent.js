@@ -2,10 +2,20 @@ import { useState } from "react";
 
 function InvoiceFormComponent(){
     const [po_number, setPoNumber]= useState();
+    const[supplier_name, setSupplierName]= useState();
     const handlePoChange= (event) => {
-        setPoNumber(event.target.value);
+        const poNumber = event.target.value;
+
+        setPoNumber(poNumber);
+        if (poNumber) {
+            fetch(`http://localhost:3000/orders/${poNumber}/supplierName`)
+            .then(res => res.json())
+            .then(setSupplierName);
+        } else {
+            setSupplierName("");
+        }
+        
     }
-        // Supplier field should be dropdown from db- enter supplier here. 
 
     const [invoice_number, setInvoiceNumber]= useState();
     const handleInvoiceNumberEntry= (event) =>{
@@ -36,19 +46,37 @@ function InvoiceFormComponent(){
     const handleTotalToPayEntry= (event) =>{
         setTotalToPay(event.target.value);
     }
-    // Add a field to attach a PDF here to the invoice record- if possible
 
+    // Change goods description to description of goods/ to match the db name if this is an issue.
 
     const handleSubmit= (event) => {
         event.preventDefault();
-        alert("Clicked save");
+        fetch(`http://localhost:3000/orders`, {
+            method:"POST",
+            body: JSON.stringify({
+                "po_number": po_number,
+                "invoice_number": invoice_number,
+                "invoice_date": invoice_date,
+                "goods_description": goods_description,
+                "net_amount": net_amount,
+                "tax_rate": tax_rate,
+                "total_to_pay": total_to_pay
+            })
+        }).then(() => {
+            setPoNumber("");
+            setInvoiceNumber("");
+            setInvoiceDate("");
+            setGoodsDescription("");
+        })
     }
+
     return(
         <form onSubmit={handleSubmit}>
             <label>
                 Po Number:
                 <input type="text" value={po_number} onChange={handlePoChange}/>
             </label>
+            <span>Supplier name {supplier_name}</span>
             <label>
                 Invoice number:
                 <input type="text" value={invoice_number} onChange={handleInvoiceNumberEntry}/>

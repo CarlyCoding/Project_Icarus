@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 function AwaitingMatchComponent({supplierId}){
     const [invoices, setInvoices]= useState([]);
 
-// Unmatched is == False
+// Unmatched is == False will be built into backend.
     useEffect(
         () => {
             fetch(`http://localhost:3000/suppliers/${supplierId}/invoices/unmatched`)
