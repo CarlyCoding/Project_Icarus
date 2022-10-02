@@ -41,7 +41,7 @@ function SearchSupplierComponent({onSupplierSelected}){
                     return <MenuItem key={supplier.id} value={supplier.id}>{supplier.name}</MenuItem>
                 })}
         </Select>
-        <FormHelperText>Select supplier to view associated purchase orders</FormHelperText>
+        <FormHelperText>Select supplier to view associated items</FormHelperText>
       </FormControl>
         </div>
     )

@@ -2,6 +2,7 @@ from flask import Flask, jsonify, request, redirect
 from flask import Blueprint
 from repositories.SuppliersRepository import selectAllSuppliers
 from repositories.Orders_repository import select
+from repositories.SuppliersRepository import selectUnmatchedInvoices
 
 Suppliers_blueprint = Blueprint("Suppliers", __name__ )
 
@@ -16,3 +17,10 @@ def SupplierPurchaseOrders(id):
     response= jsonify(select(id))
     response.headers.add("Access-Control-Allow-Origin", "*")
     return response
+
+@Suppliers_blueprint.route("/suppliers/<id>/invoices/unmatched", methods =['GET'])
+def SupplierUnmatchedInvoices(id):
+    response= jsonify(selectUnmatchedInvoices(id))
+    response.headers.add("Access-Control-Allow-Origin", "*")
+    return response
+    
