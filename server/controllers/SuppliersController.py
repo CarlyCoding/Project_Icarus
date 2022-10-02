@@ -1,7 +1,7 @@
 from flask import Flask, jsonify, request, redirect
 from flask import Blueprint
 from repositories.SuppliersRepository import selectAllSuppliers
-from repositories.ViewPurchaseOrders_repository import select
+from repositories.Orders_repository import select
 
 Suppliers_blueprint = Blueprint("Suppliers", __name__ )
 

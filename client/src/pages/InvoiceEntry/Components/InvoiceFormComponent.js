@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useMemo, useState } from "react";
 import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
 
@@ -44,26 +44,33 @@ function InvoiceFormComponent(){
         setTaxRate(event.target.value);
     }
 
-    const [total_to_pay, setTotalToPay]= useState();
-    const handleTotalToPayEntry= (event) =>{
-        setTotalToPay(event.target.value);
-    }
 
+    const tax_to_pay = useMemo(() => {
+        return net_amount * tax_rate/100;
+    },[net_amount,tax_rate]);
+
+    const total_to_pay = useMemo(() => {
+        return tax_to_pay + Number(net_amount);
+    }, [net_amount, tax_to_pay]);
     // Change goods description to description of goods/ to match the db name if this is an issue.
 
     const handleSubmit= (event) => {
         event.preventDefault();
-        fetch(`http://localhost:3000/orders`, {
+        fetch(`http://localhost:3000/invoices`, {
             method:"POST",
             body: JSON.stringify({
                 "po_number": po_number,
                 "invoice_number": invoice_number,
                 "invoice_date": invoice_date,
                 "goods_description": goods_description,
-                "net_amount": net_amount,
-                "tax_rate": tax_rate,
+                "net_amount": Number (net_amount),
+                "tax_rate": Number (tax_rate),
+                "tax_to_pay": tax_to_pay,
                 "total_to_pay": total_to_pay
-            })
+            }),
+            headers:{
+                "content-type":"application/JSON"
+            }
         }).then(() => {
             setPoNumber("");
             setInvoiceNumber("");
@@ -71,7 +78,6 @@ function InvoiceFormComponent(){
             setGoodsDescription("");
             setNetAmount("");
             setTaxRate("");
-            setTotalToPay("");
         })
     }
 
@@ -124,9 +130,13 @@ function InvoiceFormComponent(){
         value={tax_rate} onChange={handleTaxRateEntry}
         />
         <TextField
-        required
+          disabled
+          value={tax_to_pay}
+        />
+        <TextField
+        disabled
         label="Total to pay"
-        value={total_to_pay} onChange={handleTotalToPayEntry}
+        value={total_to_pay}
         />
         </div>
         <input type="submit" value="Submit" onClick={handleSubmit}/>
