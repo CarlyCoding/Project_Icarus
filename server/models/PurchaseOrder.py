@@ -9,4 +9,4 @@ class PurchaseOrder:
 
 
 
-        # Note: No description field in the PO bit yet. 
+        # Note: No description field in the PO bit yet- add when db added. 
