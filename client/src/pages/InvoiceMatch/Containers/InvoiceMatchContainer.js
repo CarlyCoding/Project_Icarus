@@ -1,6 +1,6 @@
 // Import the invoice card components.
 import React, {useState, useEffect} from "react";
-import {useParams} from "react-router-dom";
+import {useParams, useNavigate} from "react-router-dom";
 
 
 const InvoiceMatchContainer = () => {
@@ -14,6 +14,19 @@ const InvoiceMatchContainer = () => {
         .then(setInvoice);
     }, []);
 
+    const navigate = useNavigate();
+
+    const handleMatch= () => {
+    
+        fetch(`http://localhost:3000/invoices/${invoice_number}/match`, {
+            method: "POST",
+            body: JSON.stringify({
+                "status_matched": true
+            })
+        }).then(() => {
+            navigate('/ViewKeyed')
+        })
+    }
     return(
         <>
         {/* Do same for the PO here.  */}
@@ -22,11 +35,14 @@ const InvoiceMatchContainer = () => {
         
         <h3>Purchase order associated for match</h3>
         <span>Match to order {invoice.po_id} ?</span>
+
         <h3>Invoice detail for match</h3>
             <span>Invoice number {invoice.invoice_number} {invoice.description_of_goods} {invoice.pre_tax} {invoice.tax_rate} {invoice.total_to_pay}</span>
+            
+            <div className="Match button">
+            <button onClick={() => { handleMatch()  }}>Confirm match</button>
+            </div>
         </>
-        
-        // Should have an on click change bool to true for status_matched. 
     )
 
 
