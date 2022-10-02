@@ -11,8 +11,9 @@ def select(supplier_id):
     for row in result:
         orders.append({
             'po_number': row['po_number'], 
-            'id': row['id'], 
-            'date': row['date'], 
+            'id': row['order_id'], 
+            'date': row['date'],
+            'description': row['description_of_goods'],
             'full_amount_raised': row['full_amount_raised'], 
             'receipted_amount': row['receipted_amount'], 
             'tax_rate': row['tax_rate']

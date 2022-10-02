@@ -45,8 +45,8 @@ function PurchaseOrdersComponent({supplierId}){
               </TableCell>
               <TableCell align="right">{order.description}</TableCell>
               <TableCell align="right">{order.date}</TableCell>
-              <TableCell align="right">{order.raised}</TableCell>
-              <TableCell align="right">{order.receipted}</TableCell>
+              <TableCell align="right">{order.full_amount_raised}</TableCell>
+              <TableCell align="right">{order.receipted_amount}</TableCell>
               <TableCell align="right">{order.tax_rate}</TableCell>
             </TableRow>
           ))}
