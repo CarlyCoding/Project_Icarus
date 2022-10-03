@@ -5,7 +5,7 @@ import CardContent from '@mui/material/CardContent';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 
-export const PageLink = ({link, text}) => {
+export const PageLink = ({icon, link, text}) => {
     return (
 
         <Card sx={{ minWidth: 275 }}>
@@ -13,6 +13,7 @@ export const PageLink = ({link, text}) => {
         <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
           {text}
         </Typography>
+        {icon}
       </CardContent>
       <CardActions>
       <a href={link}>{text}</a>
