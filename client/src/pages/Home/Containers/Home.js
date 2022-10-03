@@ -21,11 +21,8 @@ function Home() {
       <div className="Select_Section">
 
             <h3> Select your page</h3>
-        
-        
-            
-      </div>
 
+      </div>
 
       <div className= "HomeLinks">
         <Stack direction="row" spacing={2}>

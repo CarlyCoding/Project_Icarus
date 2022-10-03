@@ -6,3 +6,11 @@
     padding-top: 10%;
 }
 
+.Link_card{
+    width: 100%;
+    align-self: center;
+}
+
+.shadow_hover:hover {
+    box-shadow: 5px 10px 8px 10px #f0daf2;
+}

@@ -1,3 +1,4 @@
+from optparse import Values
 from db.run_sql  import run_sql
 
 def addInvoice(invoice):
@@ -40,4 +41,27 @@ def getInvoicesAtTrue():
         })
     return invoices
 
+# This is for the matching screen from here forward
+# Get invoice by invoice number 
 
+def getInvoicesByInvoiceNumber(invoice_number):
+    sql= 'SELECT * FROM invoices where invoice_number = %s'
+    values = [invoice_number]
+    result = (sql, run_sql)
+
+    invoices = []
+    for row in result:
+        invoices.append({
+            'invoice_number': row['invoice_number'],
+            'invoice_date': row ['date_of_invoice'],
+            'description of goods': row['description_of_goods'],
+            'pre_tax': ['pre_tax'],
+            'tax_rate': ['tax_rate'],
+            'tax_to_pay': ['tax_to_pay'],
+            'total_to_pay': ['total_to_pay']
+        })
+    return invoices
+
+
+# Basic GET
+# Have a POST for the matched invoices. 

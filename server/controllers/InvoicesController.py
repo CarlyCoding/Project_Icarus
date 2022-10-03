@@ -1,3 +1,4 @@
+from crypt import methods
 import json
 from urllib import response
 from flask import Flask, jsonify, request, redirect
@@ -6,6 +7,7 @@ from repositories.SuppliersRepository import selectAllSuppliers
 from repositories.Orders_repository import select
 from repositories.Invoices_repository import addInvoice
 from repositories.Invoices_repository import getInvoicesAtTrue
+from server.repositories.Invoices_repository import getInvoicesByInvoiceNumber
 
 Invoices_blueprint = Blueprint("Invoices", __name__ )
 
@@ -28,3 +30,14 @@ def getMatchedInvoices():
     response= jsonify(getInvoicesAtTrue())
     response.headers.add("Access-Control-Allow-Origin", "*")
     return response
+
+
+# have a get by invoice number
+@Invoices_blueprint.route("invoices/<invoice_number>/match", methods['GET'])
+def  getByInvoiceNumber(invoice_number):
+    response= jsonify(getInvoicesByInvoiceNumber(invoice_number))
+    response.headers.add("Access-Control-Allow-Origin", "*")
+    return response
+
+# Just single GET 
+# Have a POST for matched invoices

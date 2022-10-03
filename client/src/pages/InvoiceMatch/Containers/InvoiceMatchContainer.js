@@ -5,7 +5,6 @@ import {useParams, useNavigate} from "react-router-dom";
 
 const InvoiceMatchContainer = () => {
     const [invoice, setInvoice] = useState([]);
-
     const {invoice_number} = useParams();
 
     useEffect(() => {
@@ -29,12 +28,10 @@ const InvoiceMatchContainer = () => {
     }
     return(
         <>
-        {/* Do same for the PO here.  */}
-
         <h1> Invoice matching Screen </h1>
         
         <h3>Purchase order associated for match</h3>
-        <span>Match to order {invoice.po_id} ?</span>
+        <span>Match to order {invoice.order_id} ?</span>
 
         <h3>Invoice detail for match</h3>
             <span>Invoice number {invoice.invoice_number} {invoice.description_of_goods} {invoice.pre_tax} {invoice.tax_rate} {invoice.total_to_pay}</span>
