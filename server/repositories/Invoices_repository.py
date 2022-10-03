@@ -22,9 +22,22 @@ VALUES (%s, %s, %s, %s, %s, %s, %s, FALSE, %s, %s);"""
     result = run_sql(sql, values)
 
 
+def getInvoicesAtTrue():
+    sql= 'SELECT * FROM invoices where status_matched= TRUE'
+    values= []
+    result= run_sql(sql, values)
+
+    invoices = []
+    for row in result:
+        invoices.append({
+            'invoice_number': row['invoice_number'],
+            'invoice_date': row['date_of_invoice'],
+            'description_of_goods': row['description_of_goods'],
+            'pre_tax': row['pre_tax'],
+            'tax_rate': row['tax_rate'],
+            'tax_to_pay': row ['tax_to_pay'],
+            'total_to_pay': row ['total_to_pay']
+        })
+    return invoices
 
 
-
-
-
-# has an add method with insert into 

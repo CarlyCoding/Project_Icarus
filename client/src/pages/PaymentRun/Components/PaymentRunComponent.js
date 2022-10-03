@@ -6,11 +6,11 @@ function PaymentRunComponent(){
 
 useEffect(
     () => {
-        fetch("http://localhost:3000/suppliers/invoices/matched")
+        fetch("http://localhost:3000/invoices/matched")
         .then(res => res.json())
         .then(setInvoices)
     },
-
+    []
 )
 
 return(
@@ -24,7 +24,6 @@ return(
             <th>Tax Rate</th>
             <th>Tax to pay</th>
             <th>Total to pay</th>
-            <th>Status matched for payment</th>
         </thead>
     <tbody>
         {invoices.map(invoice =>{
@@ -36,7 +35,6 @@ return(
                 <td>{invoice.tax_rate}</td>
                 <td>{invoice.tax_to_pay}</td>
                 <td>{invoice.total_to_pay}</td>
-                <td>{invoice.status_matched}</td>
             </tr>
         })}
 
