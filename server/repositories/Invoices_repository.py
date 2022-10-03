@@ -42,12 +42,31 @@ def getInvoicesAtTrue():
     return invoices
 
 # This is for the matching screen from here forward
-# Get invoice by invoice number 
 
-def getInvoicesByInvoiceNumber(invoice_number):
+# Get invoice by invoice number- when invoice is selected 
+# Using numbers as result is list within a list, 0 to access and 1...as array indexes.
+def getInvoiceByInvoiceNumber(invoice_number):
     sql= 'SELECT * FROM invoices where invoice_number = %s'
     values = [invoice_number]
-    result = (sql, run_sql)
+    result = run_sql(sql, values)[0]
+    print (result)
+
+    return {
+        'invoice_number': result[0],
+        'invoice_date': result[1],
+        'description of goods': result[2],
+        'pre_tax': result[3],
+        'tax_rate': result[4],
+        'tax_to_pay': result[5],
+        'total_to_pay': result[6]
+    }
+    
+
+# Basic get invoices method.
+def getInvoices():
+    sql = "SELECT * from invoices"
+    values = []
+    result = run_sql(sql, values)
 
     invoices = []
     for row in result:
@@ -60,8 +79,13 @@ def getInvoicesByInvoiceNumber(invoice_number):
             'tax_to_pay': ['tax_to_pay'],
             'total_to_pay': ['total_to_pay']
         })
-    return invoices
+
+# Matching invoices method.
+def matchInvoice(invoice_number):
+    sql = 'UPDATE invoices SET status_matched = TRUE WHERE invoice_number = %s'
+    values = [invoice_number]
+    result = run_sql(sql, values)
 
 
-# Basic GET
-# Have a POST for the matched invoices. 
+
+

@@ -3,11 +3,10 @@ import json
 from urllib import response
 from flask import Flask, jsonify, request, redirect
 from flask import Blueprint
-from repositories.SuppliersRepository import selectAllSuppliers
 from repositories.Orders_repository import select
 from repositories.Invoices_repository import addInvoice
 from repositories.Invoices_repository import getInvoicesAtTrue
-from server.repositories.Invoices_repository import getInvoicesByInvoiceNumber
+from repositories.Invoices_repository import getInvoices, getInvoiceByInvoiceNumber, matchInvoice
 
 Invoices_blueprint = Blueprint("Invoices", __name__ )
 
@@ -16,7 +15,6 @@ def addNewInvoice():
     if request.method.lower()== "post":
 
         invoice= request.get_json()
-        print(invoice)
         addInvoice(invoice)
     # Response is defined here as CORS requires it.
     response=jsonify([])
@@ -33,11 +31,32 @@ def getMatchedInvoices():
 
 
 # have a get by invoice number
-@Invoices_blueprint.route("invoices/<invoice_number>/match", methods['GET'])
+@Invoices_blueprint.route("/invoices/<invoice_number>", methods= ['GET'])
 def  getByInvoiceNumber(invoice_number):
-    response= jsonify(getInvoicesByInvoiceNumber(invoice_number))
+    response= jsonify(getInvoiceByInvoiceNumber(invoice_number))
     response.headers.add("Access-Control-Allow-Origin", "*")
     return response
 
 # Just single GET 
+@Invoices_blueprint.route("/invoices", methods= ['GET'])
+def getAllInvoices():
+    response= jsonify(getInvoices())
+    response.headers.add("Access-Control-Allow-Origin", "*")
+    return response
+
 # Have a POST for matched invoices
+@Invoices_blueprint.route("/invoices/<invoice_number>/match", methods =['POST', "OPTIONS"])
+def matchSelectedInvoice(invoice_number):
+    if request.method.lower()== "post":
+
+        invoice= request.get_json()
+        matchInvoice(invoice_number)
+    # Response is defined here as CORS requires it.
+    response=jsonify([])
+    response.headers.add("Access-Control-Allow-Origin", "*")
+    response.headers.add("Access-Control-Allow-Methods", "*")
+    response.headers.add("Access-Control-Allow-Headers", "*")
+    return response
+
+# RecursionError: maximum recursion depth exceeded while calling a Python object
+# Put notes about this error- the method is calling itself eg. controller method and repo method had the same name 

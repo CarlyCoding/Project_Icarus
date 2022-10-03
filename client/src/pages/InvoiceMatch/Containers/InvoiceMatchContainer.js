@@ -15,13 +15,16 @@ const InvoiceMatchContainer = () => {
 
     const navigate = useNavigate();
 
+    // Flask.json needs the header content type for the post
     const handleMatch= () => {
-    
         fetch(`http://localhost:3000/invoices/${invoice_number}/match`, {
             method: "POST",
             body: JSON.stringify({
                 "status_matched": true
-            })
+            }),
+            headers:{
+                "content-type": "application/JSON"
+            }
         }).then(() => {
             navigate('/ViewKeyed')
         })
