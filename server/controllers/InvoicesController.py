@@ -6,7 +6,7 @@ from flask import Blueprint
 from repositories.Orders_repository import select
 from repositories.Invoices_repository import addInvoice
 from repositories.Invoices_repository import getInvoicesAtTrue
-from repositories.Invoices_repository import getInvoices, getInvoiceByInvoiceNumber, matchInvoice
+from repositories.Invoices_repository import getInvoices, getInvoiceByInvoiceNumber, matchInvoice, getOrder
 
 Invoices_blueprint = Blueprint("Invoices", __name__ )
 
@@ -60,3 +60,12 @@ def matchSelectedInvoice(invoice_number):
 
 # RecursionError: maximum recursion depth exceeded while calling a Python object
 # Put notes about this error- the method is calling itself eg. controller method and repo method had the same name 
+
+
+# For the orders side of the matching
+
+@Invoices_blueprint.route("/invoices/<invoice_number>/order", methods= ['GET'])
+def  getOrderForInvoice(invoice_number):
+    response= jsonify(getOrder(invoice_number))
+    response.headers.add("Access-Control-Allow-Origin", "*")
+    return response

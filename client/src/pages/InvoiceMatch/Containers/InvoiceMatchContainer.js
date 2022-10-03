@@ -4,7 +4,7 @@ import {useParams, useNavigate} from "react-router-dom";
 
 
 const InvoiceMatchContainer = () => {
-    const [invoice, setInvoice] = useState([]);
+    const [invoice, setInvoice] = useState({});
     const {invoice_number} = useParams();
 
     useEffect(() => {
@@ -12,6 +12,16 @@ const InvoiceMatchContainer = () => {
         .then(res => res.json())
         .then(setInvoice);
     }, []);
+
+    const [order, setOrder] = useState({});
+    useEffect(() => {
+        fetch(`http://localhost:3000/invoices/${invoice_number}/order`)
+        .then(res => res.json())
+        .then(setOrder);
+    }, []);
+
+
+
 
     const navigate = useNavigate();
 
@@ -34,7 +44,7 @@ const InvoiceMatchContainer = () => {
         <h1> Invoice matching Screen </h1>
         
         <h3>Purchase order associated for match</h3>
-        <span>Match to order {invoice.order_id} ?</span>
+        <span>Match to order {order.po_number} for receipted amount of {order.receipted_amount}</span>
 
         <h3>Invoice detail for match</h3>
             <span>Invoice number {invoice.invoice_number} {invoice.description_of_goods} {invoice.pre_tax} {invoice.tax_rate} {invoice.total_to_pay}</span>

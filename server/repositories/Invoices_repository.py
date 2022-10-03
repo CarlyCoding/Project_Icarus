@@ -87,5 +87,18 @@ def matchInvoice(invoice_number):
     result = run_sql(sql, values)
 
 
+# Put this join in order layout of tables
+# The two zeros are due to the list in a list result being returned (for some reason?)
+def getOrder(invoice_number):
+    sql = """SELECT po_number, receipted_amount FROM orders 
+            join invoices on invoices.order_id = orders.order_id 
+            where invoices.invoice_number= %s"""
+    values = [invoice_number]
+    result = run_sql(sql, values)[0]
+    return {
+        "po_number": result[0],
+        "receipted_amount": result[1]
+    }
+
 
 
