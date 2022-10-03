@@ -1,5 +1,12 @@
 import { ThemeContext } from "@emotion/react";
 import { useEffect, useState } from "react";
+import Table from '@mui/material/Table';
+import TableBody from '@mui/material/TableBody';
+import TableCell from '@mui/material/TableCell';
+import TableContainer from '@mui/material/TableContainer';
+import TableHead from '@mui/material/TableHead';
+import TableRow from '@mui/material/TableRow';
+import Paper from '@mui/material/Paper';
 
 function AwaitingMatchComponent({supplierId}){
     const [invoices, setInvoices]= useState([]);
@@ -18,34 +25,42 @@ function AwaitingMatchComponent({supplierId}){
         supplierId
             ?
                 invoices.length > 0
-                ?
-                    <table>
-                        <thead>
-                            <th>Invoice Number</th>
-                            <th>Invoice Date</th>
-                            <th>Description of goods</th>
-                            <th>Pre-Tax total</th>
-                            <th>Tax Rate</th>
-                            <th>Tax to Pay</th>
-                            <th>Total to pay</th>
-                        </thead>
-                        <tbody>
-                            {invoices.map(invoice => {
-                                // Remember on return JS will need the next instruction on the same line or will assume null. 
-                                return <tr>
-                                    <td><a href={`/InvoiceMatch/${invoice.invoice_number}`}>{invoice.invoice_number}</a></td>
-                                    <td>{invoice.date_of_invoice}</td>
-                                    <td>{invoice.description_of_goods}</td>
-                                    <td>{invoice.pre_tax}</td>
-                                    <td>{invoice.tax_rate}</td>
-                                    <td>{invoice.tax_to_pay}</td>
-                                    <td>{invoice.total_to_pay}</td>
-                                </tr>
-                            })}
-                        </tbody>
-                    </table>
-                : <span>no unmatched</span>
-            :<h2> Choose a supplier</h2>
+                ? <TableContainer component={Paper}>
+                <Table sx={{ minWidth: 650 }} aria-label="simple table">
+                  <TableHead>
+                    <TableRow>
+                      <TableCell>Invoice Number</TableCell>
+                      <TableCell align="right">Date of Invoice</TableCell>
+                      <TableCell align="right">Description of Goods</TableCell>
+                      <TableCell align="right">Pre- tax</TableCell>
+                      <TableCell align="right">Tax Rate</TableCell>
+                      <TableCell align="right">Tax to pay</TableCell>
+                      <TableCell align="right">Total to pay</TableCell>
+                    </TableRow>
+                  </TableHead>
+                  <TableBody>
+              {invoices.map((invoice) => (
+                <TableRow
+                  key={invoice.invoice_number}
+                  sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
+                >
+                  <TableCell component="th" scope="row">
+                    {invoice.invoice_number}
+                  </TableCell>
+                  <TableCell align="right">{invoice.date_of_invoice}</TableCell>
+                  <TableCell align="right">{invoice.description_of_goods}</TableCell>
+                  <TableCell align="right">{invoice.net_amount}</TableCell>
+                  <TableCell align="right">{invoice.tax_rate}</TableCell>
+                  <TableCell align="right">{invoice.tax_to_pay}</TableCell>
+                  <TableCell align="right">{invoice.total_to_pay}</TableCell>
+                </TableRow>
+              ))}
+            </TableBody>
+          </Table>
+        </TableContainer>
+                        : <span>no unmatched</span>
+                        :<h2> Choose a supplier</h2>
+
     )
     
 }
