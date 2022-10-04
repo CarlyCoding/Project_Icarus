@@ -2,6 +2,9 @@
 import React, {useState, useEffect} from "react";
 import {useParams, useNavigate} from "react-router-dom";
 import HomeButtonComponent from "../../../components/HomeButtonComponent";
+import Alert from '@mui/material/Alert';
+import AlertTitle from '@mui/material/AlertTitle';
+import Stack from '@mui/material/Stack';
 
 
 const InvoiceMatchContainer = () => {
@@ -60,12 +63,13 @@ const InvoiceMatchContainer = () => {
             <br></br>
             Total to pay: {invoice.total_to_pay}</span>
             
-            <p>
-                
-            </p>
-            <div className="Match button">
-            <button onClick={() => { handleMatch()  }}>Confirm match</button>
-            </div>
+            
+            {order.receipted_amount >= invoice.total_to_pay 
+            ?<button onClick={() => { handleMatch()  }}>Confirm match</button>
+            : <Stack style={{'margin': 'auto', 'width': '500px'}} spacing={2}>
+            <Alert severity="error"><AlertTitle>Cannot Match</AlertTitle>Not enough receipted to pay invoice</Alert></Stack>
+        }
+            
         </>
     )
 
