@@ -2,6 +2,7 @@
     font-family: 'Playfair Display SC', serif;
 }
 
+
 .Padding_Class{
     padding-top: 10%;
 }
@@ -12,5 +13,12 @@
 }
 
 .shadow_hover:hover {
-    box-shadow: 5px 10px 8px 10px #f0daf2;
+    box-shadow: 5px 5px 8px 5px #f0daf2;
+}
+
+.Header_Section{
+    font-size: x-large;
+    outline-style: solid;
+    outline-width: 7px;
+    outline-color: #f0daf2;
 }

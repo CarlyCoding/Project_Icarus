@@ -46,11 +46,23 @@ const InvoiceMatchContainer = () => {
         <h1>Invoice matching Screen  </h1>
         
         <h3>Purchase order associated for match</h3>
-        <span>Match to order {order.po_number} for receipted amount of {order.receipted_amount}</span>
+        <span>Confirm match to order {order.po_number} for receipted amount of {order.receipted_amount} ?</span>
 
         <h3>Invoice detail for match</h3>
-            <span>Invoice number {invoice.invoice_number} {invoice.description_of_goods} {invoice.pre_tax} {invoice.tax_rate} {invoice.total_to_pay}</span>
+            <span>
+            Invoice number: {invoice.invoice_number}
+            <br></br>
+            Description of goods: {invoice.description_of_goods}
+            <br></br>
+            Total before tax: {invoice.pre_tax}
+            <br></br>
+            Tax rate: {invoice.tax_rate}
+            <br></br>
+            Total to pay: {invoice.total_to_pay}</span>
             
+            <p>
+                
+            </p>
             <div className="Match button">
             <button onClick={() => { handleMatch()  }}>Confirm match</button>
             </div>

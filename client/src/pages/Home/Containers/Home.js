@@ -12,7 +12,6 @@ function Home() {
     return (
       <Container>
       <div className="Header_Section">
-    
             <h1>Icarus Accounts Payable Software</h1>
       </div>
       <div className="Padding_Class">
