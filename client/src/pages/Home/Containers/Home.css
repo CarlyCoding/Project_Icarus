@@ -22,9 +22,20 @@
 
 .Header_Section{
     font-size: x-large;
-    outline-style: solid;
-    outline-width: 1px;
-    outline-color: #f0daf2;
-    margin-left: 1em;
-    margin-right: 1em;
+    background-color: #f0daf2;
+}
+
+.Header_Section > h1 {
+    margin-top: 0;
+    padding-top: 1em;
+    padding-bottom: 0.25em;
+}
+
+.HomeLinks .MuiSvgIcon-root {
+    color: #600862;
+}
+
+body{
+    background-image: url("/public/Clouds.jpeg");
+    background-size: cover;
 }
