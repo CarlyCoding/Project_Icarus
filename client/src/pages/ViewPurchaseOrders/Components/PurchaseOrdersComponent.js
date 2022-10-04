@@ -19,7 +19,7 @@ function PurchaseOrdersComponent({supplierId}){
         },
         [supplierId]
     );
-
+        // If there is supplier id then show the table- if isn't then show chose a supplier message.
     return(
         supplierId 
             ?<TableContainer component={Paper}>

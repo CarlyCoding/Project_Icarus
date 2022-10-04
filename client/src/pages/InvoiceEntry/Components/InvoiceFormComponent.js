@@ -44,7 +44,7 @@ function InvoiceFormComponent(){
         setTaxRate(event.target.value);
     }
 
-
+    // Use memo is for a calculation every time the dependancies change[].
     const tax_to_pay = useMemo(() => {
         return net_amount * tax_rate/100;
     },[net_amount,tax_rate]);
@@ -54,6 +54,7 @@ function InvoiceFormComponent(){
     }, [net_amount, tax_to_pay]);
     // Change goods description to description of goods/ to match the db name if this is an issue.
 
+    // Number used 
     const handleSubmit= (event) => {
         event.preventDefault();
         fetch(`http://localhost:3000/invoices`, {

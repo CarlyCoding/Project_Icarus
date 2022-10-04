@@ -32,10 +32,11 @@
 }
 
 .HomeLinks .MuiSvgIcon-root {
-    color: #600862;
+    color: hotpink;
 }
 
-body{
+.content_background{
     background-image: url("/public/Clouds.jpeg");
     background-size: cover;
+    flex-grow: 1;
 }

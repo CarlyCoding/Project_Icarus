@@ -54,7 +54,7 @@ def getInvoiceByInvoiceNumber(invoice_number):
     return {
         'invoice_number': result[0],
         'invoice_date': result[1],
-        'description of goods': result[2],
+        'description_of_goods': result[2],
         'pre_tax': result[3],
         'tax_rate': result[4],
         'tax_to_pay': result[5],
@@ -73,7 +73,7 @@ def getInvoices():
         invoices.append({
             'invoice_number': row['invoice_number'],
             'invoice_date': row ['date_of_invoice'],
-            'description of goods': row['description_of_goods'],
+            'description_of_goods': row['description_of_goods'],
             'pre_tax': ['pre_tax'],
             'tax_rate': ['tax_rate'],
             'tax_to_pay': ['tax_to_pay'],

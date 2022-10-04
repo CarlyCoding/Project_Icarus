@@ -14,6 +14,7 @@ function Home() {
       <div className="Header_Section">
             <h1>Icarus Accounts Payable Software</h1>
       </div>
+      <div className='content_background'>
       <Container>
       
       <div className="Padding_Class">
@@ -34,6 +35,7 @@ function Home() {
         </Stack>
       </div>
       </Container>
+      </div>
       </>
     );
   }
