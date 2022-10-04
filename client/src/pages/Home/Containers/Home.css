@@ -12,13 +12,19 @@
     align-self: center;
 }
 
-.shadow_hover:hover {
+.page_link{
+    text-decoration: none;
+}
+
+.page_link:hover {
     box-shadow: 5px 5px 8px 5px #f0daf2;
 }
 
 .Header_Section{
     font-size: x-large;
     outline-style: solid;
-    outline-width: 7px;
+    outline-width: 1px;
     outline-color: #f0daf2;
+    margin-left: 1em;
+    margin-right: 1em;
 }

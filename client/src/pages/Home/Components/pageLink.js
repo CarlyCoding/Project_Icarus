@@ -7,17 +7,14 @@ import Typography from '@mui/material/Typography';
 
 export const PageLink = ({icon, link, text}) => {
     return (
-<a className="shadow_hover"href={link}>
+<a className="page_link"href={link}>
 <Card  sx={{ minWidth: 275 }}>
       <CardContent>
-        <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
+        <Typography sx={{ fontSize: 16 }} color="text.secondary" gutterBottom>
           {text}
         </Typography>
         {icon}
       </CardContent>
-      <CardActions>
-      <a className='Link_card' href={link}>{text}</a>
-      </CardActions>
     </Card>
     </a>
     )   
