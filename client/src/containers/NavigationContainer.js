@@ -16,10 +16,10 @@ function NavigationContainer(){
                <Route exact path="/ViewKeyed" element={<AwaitingMatchContainer/>} />
                <Route exact path="/ViewPaymentRun" element={<PaymentRunContainer/>} />
                <Route path="/InvoiceMatch/:invoice_number" element={<InvoiceMatchContainer/>}/>
-               {/* Enter here all the pathways for the pages */}
+               {/* All pathways for the pages here */}
             </Routes>
         </Router>
     )
 }
 
-export default NavigationContainer
+export default NavigationContainer;

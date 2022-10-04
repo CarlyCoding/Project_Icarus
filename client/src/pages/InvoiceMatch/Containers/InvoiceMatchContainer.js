@@ -1,6 +1,7 @@
 // Import the invoice card components.
 import React, {useState, useEffect} from "react";
 import {useParams, useNavigate} from "react-router-dom";
+import HomeButtonComponent from "../../../components/HomeButtonComponent";
 
 
 const InvoiceMatchContainer = () => {
@@ -41,7 +42,8 @@ const InvoiceMatchContainer = () => {
     }
     return(
         <>
-        <h1> Invoice matching Screen </h1>
+        <HomeButtonComponent></HomeButtonComponent> 
+        <h1>Invoice matching Screen  </h1>
         
         <h3>Purchase order associated for match</h3>
         <span>Match to order {order.po_number} for receipted amount of {order.receipted_amount}</span>

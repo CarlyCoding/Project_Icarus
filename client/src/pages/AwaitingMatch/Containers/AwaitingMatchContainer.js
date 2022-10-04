@@ -1,7 +1,8 @@
 import { useState } from 'react';
 import SearchSupplierComponent from "../../../components/SearchSupplierComponent";
 import AwaitingMatchComponent from "../Components/AwaitingMatchComponent";
-
+import HomeButtonComponent from '../../../components/HomeButtonComponent';
+import Home from '../../Home/Containers/Home';
 
 function AwaitingMatchContainer(){
     const [supplierId, setSupplierId]= useState(undefined);
@@ -12,6 +13,7 @@ function AwaitingMatchContainer(){
     }
     return(
         <>
+        <HomeButtonComponent></HomeButtonComponent>
         <SearchSupplierComponent onSupplierSelected={getInvoices}></SearchSupplierComponent>
         <AwaitingMatchComponent supplierId={supplierId}></AwaitingMatchComponent>
         </>

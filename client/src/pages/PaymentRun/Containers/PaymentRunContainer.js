@@ -1,13 +1,12 @@
 import PaymentRunComponent from "../Components/PaymentRunComponent"
+import HomeButtonComponent from "../../../components/HomeButtonComponent";
 
 function PaymentRunContainer(){
     return(
         <>
-        <div className="Payment Run"/>
-        <h1> Payment Run </h1>
-
+        <HomeButtonComponent></HomeButtonComponent>
+        <h1> Payment Run </h1> 
         <PaymentRunComponent></PaymentRunComponent>
-
         </>
     )
 }

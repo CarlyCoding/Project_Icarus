@@ -1,12 +1,14 @@
+import HomeButtonComponent from "../../../components/HomeButtonComponent";
 import InvoiceFormComponent from "../Components/InvoiceFormComponent";
+
 
 function InvoiceEntryContainer(){
     return(
     <>
-    <div className="Invoice Header"/>
+    <HomeButtonComponent></HomeButtonComponent>
     <h1>Invoice Entry</h1>
 
-    <div className='Invoice Entry'>
+    <div className='Invoice_Entry'>
         
         <h3>
             Key new invoice below.

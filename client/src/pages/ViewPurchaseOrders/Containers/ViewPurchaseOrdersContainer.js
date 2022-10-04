@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import PurchaseOrdersComponent from '../Components/PurchaseOrdersComponent';
 import SearchSupplierComponent from '../../../components/SearchSupplierComponent';
+import HomeButtonComponent from '../../../components/HomeButtonComponent';
 
 function ViewPurchaseOrdersContainer(){
     const [supplierId, setSupplierId]= useState(undefined);
@@ -10,6 +11,7 @@ function ViewPurchaseOrdersContainer(){
     }
     return (
         <>
+            <HomeButtonComponent></HomeButtonComponent> 
             <SearchSupplierComponent onSupplierSelected={getPOs}></SearchSupplierComponent>
             <PurchaseOrdersComponent supplierId={supplierId}></PurchaseOrdersComponent>
         </>
