@@ -49,7 +49,7 @@ function AwaitingMatchComponent({supplierId}){
                             </TableCell>
                             <TableCell align="right">{invoice.date_of_invoice}</TableCell>
                             <TableCell align="right">{invoice.description_of_goods}</TableCell>
-                            <TableCell align="right">{invoice.net_amount}</TableCell>
+                            <TableCell align="right">{invoice.pre_tax}</TableCell>
                             <TableCell align="right">{invoice.tax_rate}</TableCell>
                             <TableCell align="right">{invoice.tax_to_pay}</TableCell>
                             <TableCell align="right">{invoice.total_to_pay}</TableCell>
@@ -64,4 +64,4 @@ function AwaitingMatchComponent({supplierId}){
     )
     
 }
- export default AwaitingMatchComponent;
+export default AwaitingMatchComponent;
