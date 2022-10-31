@@ -4,7 +4,7 @@ Project Icarus was designed and coded solely by myself, and was my version of a 
 
 Project Icarus was written with a Python backend (Flask)  and JavaScript frontend (React), along with PostgreSQL for the database side. I used Postico for the database, and also used Mockoon to test the frontend code was functional. This project was written front- backend so testing of the frontend code before commiting to the large amount of seed data was a priority. The database was written by me, no external data (eg. APIs) was used, I calculated the amounts and worked out the keys myself. 
 
-This project was completed with a 2 week deadline, so this is something I consider a first version of something I would like to continue extending and adding more features to. 
+This project was completed with a 2 week deadline, so this is something I consider a first version of something I would like to continue extending and adding more features to.
 
 The frontend design was made up of CSS with Material UI components. This was a challenge I set myself as I had wanted to learn how to incorporate material UI to make the buttons etc. look as visially clean as possible. 
 
